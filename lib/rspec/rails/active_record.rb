@@ -8,6 +8,7 @@ module RSpec
         config.before :suite do
           # This allows dynamic columns etc to be used on ActiveRecord models when creating instance_doubles
           if defined?(ActiveRecord) && defined?(ActiveRecord::Base) && defined?(::RSpec::Mocks)
+            require 'rspec/mocks'
             ::RSpec::Mocks.configuration.when_declaring_verifying_double do |possible_model|
               target = possible_model.target
 
